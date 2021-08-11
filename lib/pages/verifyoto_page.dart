@@ -1,282 +1,154 @@
-import 'package:flutter/gestures.dart';
+import 'package:crunchtutor/utils/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
-class VerifyPage extends StatelessWidget {
-  // This widget is the root of your application.
+class VerifyPage extends StatefulWidget { 
+  @override
+  _VerifyPageState createState() => _VerifyPageState();
+}
+class _VerifyPageState extends State<VerifyPage> {    
+
+  //   @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     backgroundColor: Colors.white,
+  //     appBar: AppBar(
+  //       elevation: 0,
+  //       iconTheme: IconThemeData(color: Colors.black),
+  //       backgroundColor: Colors.white,
+        
+  //     ),
+      
+  //   );
+  // }    
+  String name = "";
+  bool changeButton = false;
+  final _formKey = GlobalKey<FormState>();
+  static Color darkBluebtn = Color(0xff3049ac);
+  static Color darkBlueText = Color(0xff0c324d);
+  static Color deepBluebtn = Color(0xff0c3256);
+  moveToHome(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        changeButton = true;
+      });
+      await Future.delayed(Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRoutes.loginRoute);
+      setState(() {
+        changeButton = false;
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: PinCodeVerificationScreen(
-          "+8801376221100"), // a random number, please don't call xD
-    );
-  }
-}
-
-class PinCodeVerificationScreen extends StatefulWidget {
-  final String phoneNumber;
-
-  PinCodeVerificationScreen(this.phoneNumber);
-
-  @override
-  _PinCodeVerificationScreenState createState() =>
-      _PinCodeVerificationScreenState();
-}
-
-class _PinCodeVerificationScreenState extends State<PinCodeVerificationScreen> {
-  var onTapRecognizer;
-
-  TextEditingController textEditingController = TextEditingController();
-  // ..text = "123456";
-
-  //StreamController<ErrorAnimationType> errorController;
-
-  bool hasError = false;
-  String currentText = "";
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    onTapRecognizer = TapGestureRecognizer()
-      ..onTap = () {
-        Navigator.pop(context);
-      };
-   // errorController = StreamController<ErrorAnimationType>();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    //errorController.close();
-
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue.shade50,
-      key: scaffoldKey,
-      body: GestureDetector(
-        onTap: () {},
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: ListView(
-            children: <Widget>[
-              SizedBox(height: 30),
-              Container(
-                height: MediaQuery.of(context).size.height / 3,
-                // child: FlareActor(
-                //   "assets/otp.flr",
-                //   animation: "otp",
-                //   fit: BoxFit.fitHeight,
-                //   alignment: Alignment.center,
-                // ),
-              ),
-              SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'Phone Number Verification',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                  textAlign: TextAlign.center,
+    return Material(
+      
+        color: Colors.white,
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                 SizedBox(
+                  height: 55.0,
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
-                child: RichText(
-                  text: TextSpan(
-                      text: "Enter the code sent to ",
-                      children: [
-                        TextSpan(
-                            text: widget.phoneNumber,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15)),
-                      ],
-                      style: TextStyle(color: Colors.black54, fontSize: 15)),
-                  textAlign: TextAlign.center,
+                Image.asset(
+                  "assets/images/otp.png",
+                  fit: BoxFit.cover,
+                  height: 200.0,
+                  width: 200.0,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Form(
-                key: formKey,
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 30),
-                    child: PinCodeTextField(
-                      appContext: context,
-                      pastedTextStyle: TextStyle(
-                        color: Colors.green.shade600,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      length: 6,
-                      obscureText: false,
-                      obscuringCharacter: '*',
-                      animationType: AnimationType.fade,
-                      validator: (v) {
-                        if (v!.length < 3) {
-                          return "I'm from validator";
-                        } else {
-                          return null;
-                        }
-                      },
-                      pinTheme: PinTheme(
-                        shape: PinCodeFieldShape.box,
-                        borderRadius: BorderRadius.circular(5),
-                        fieldHeight: 60,
-                        fieldWidth: 50,
-                        activeFillColor:
-                            hasError ? Colors.orange : Colors.white,
-                      ),
-                      cursorColor: Colors.black,
-                      animationDuration: Duration(milliseconds: 300),
-                      textStyle: TextStyle(fontSize: 20, height: 1.6),
-                      backgroundColor: Colors.blue.shade50,
-                      enableActiveFill: true,
-                      //errorAnimationController: errorController,
-                      controller: textEditingController,
-                      keyboardType: TextInputType.number,
-                      boxShadows: [
-                        BoxShadow(
-                          offset: Offset(0, 1),
-                          color: Colors.black12,
-                          blurRadius: 10,
-                        )
-                      ],
-                      onCompleted: (v) {
-                        print("Completed");
-                      },
-                      // onTap: () {
-                      //   print("Pressed");
-                      // },
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          currentText = value;
-                        });
-                      },
-                      beforeTextPaste: (text) {
-                        print("Allowing to paste $text");
-                        //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                        //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                        return true;
-                      },
-                    )),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                child: Text(
-                  hasError ? "*Please fill up all the cells properly" : "",
+                SizedBox(
+                  height: 20.0,
+                ),
+                Text(
+                  "Code Verification",
                   style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400),
+                    fontSize: 15,
+                    color: deepBluebtn,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                    text: "Didn't receive the code? ",
-                    style: TextStyle(color: Colors.black54, fontSize: 15),
+                 Text("Enter your code send to sujeet@gmail.com",
+                 textAlign: TextAlign.center,
+                 style: TextStyle(color: darkBlueText, backgroundColor: Colors.white,fontSize: 11,fontStyle: FontStyle.normal,fontWeight: FontWeight.w500),),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 16.0, horizontal: 32.0),
+                  child: Column(
                     children: [
-                      TextSpan(
-                          text: " RESEND",
-                          recognizer: onTapRecognizer,
-                          style: TextStyle(
-                              color: Color(0xFF91D3B3),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16))
-                    ]),
-              ),
-              SizedBox(
-                height: 14,
-              ),
-              Container(
-                margin:
-                    const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30),
-                child: ButtonTheme(
-                  height: 50,
-                  child: FlatButton(
-                    onPressed: () {
-                      formKey.currentState!.validate();
-                      // conditions for validating
-                      if (currentText.length != 6 || currentText != "towtow") {
-                       // errorController.add(ErrorAnimationType.shake); // Triggering error shake animation
-                        setState(() {
-                          hasError = true;
-                        });
-                      } else {
-                        setState(() {
-                          hasError = false;
-                          // scaffoldKey.currentState.showSnackBar(SnackBar(
-                          //   content: Text("Aye!!"),
-                          //   duration: Duration(seconds: 2),
-                          // ));
-                        });
-                      }
-                    },
-                    child: Center(
-                        child: Text(
-                      "VERIFY".toUpperCase(),
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    )),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          hintText: "Enter Code",
+                          labelText: "Code",
+                          
+                           border: OutlineInputBorder(),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Code cannot be empty";
+                          }
+                          return null;
+                        },
+                        onChanged: (value) {
+                          name = value;
+                          setState(() {});
+                        },
+                      ),
+                        SizedBox(
+                        height: 10.0,
+                        ),
+                  InkWell(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Don't recive the code? ",style: TextStyle(color: darkBlueText, backgroundColor: Colors.white,fontStyle: FontStyle.normal),),
+                      Text("Resend Code",style: TextStyle(color: darkBluebtn, backgroundColor: Colors.white,fontStyle: FontStyle.normal),),
+                    ], 
                   ),
-                ),
-                decoration: BoxDecoration(
-                    color: Colors.green.shade300,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.green.shade200,
-                          offset: Offset(1, -2),
-                          blurRadius: 5),
-                      BoxShadow(
-                          color: Colors.green.shade200,
-                          offset: Offset(-1, 2),
-                          blurRadius: 5)
-                    ]),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  FlatButton(
-                    child: Text("Clear"),
-                    onPressed: () {
-                      textEditingController.clear();
-                    },
+                  onTap: (){
+                    Navigator.pushNamed(context, '/login');
+                  },
+                  
+                ), 
+                      SizedBox(
+                        height: 40.0,
+                      ),
+                      Material(
+                        color: darkBluebtn,
+                        borderRadius:
+                            BorderRadius.circular(changeButton ? 50 : 8),
+                        child: InkWell(
+                          onTap: () => moveToHome(context),
+                          child: AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            width: changeButton ? 50 : 250,
+                            height: 50,
+                            alignment: Alignment.center,
+                            child: changeButton
+                                ? Icon(
+                                    Icons.done,
+                                    color: Colors.white,
+                                  )
+                                : Text(
+                                    "Verify & Proceed",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  FlatButton(
-                    child: Text("Set Text"),
-                    onPressed: () {
-                      textEditingController.text = "123456";
-                    },
-                  ),
-                ],
-              )
-            ],
+                )
+              ],
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

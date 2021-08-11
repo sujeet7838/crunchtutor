@@ -13,6 +13,7 @@ class _SkipPageState extends State<SkipPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.white,
         actions: <Widget>[
           Padding(

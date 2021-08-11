@@ -18,7 +18,7 @@ class _ForgotPageState extends State<ForgotPage> {
         changeButton = true;
       });
       await Future.delayed(Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoutes.loginRoute);
+      await Navigator.pushNamed(context, MyRoutes.verifyRoute);
       setState(() {
         changeButton = false;
       });
@@ -34,12 +34,12 @@ class _ForgotPageState extends State<ForgotPage> {
             child: Column(
               children: [
                  SizedBox(
-                  height: 35.0,
+                  height: 65.0,
                 ),
                 Image.asset(
                   "assets/images/graphic.png",
                   fit: BoxFit.cover,
-                  height: 100.0,
+                  height: 200.0,
                   width: 200.0,
                 ),
                 SizedBox(
