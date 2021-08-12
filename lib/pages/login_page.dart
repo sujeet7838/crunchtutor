@@ -46,15 +46,14 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 55.0,
+                  height: 100.0,
                 ),
-                
-                Image.asset(
+                Padding(padding: EdgeInsets.symmetric(horizontal: 0.0),
+                 child:Image.asset(
                   "assets/images/logo.png",
                   fit: BoxFit.cover, 
-                ),
-              
-      
+                ),),
+               
                 SizedBox(
                   height: 10.0,
                 ),
@@ -90,6 +89,10 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextFormField(
+                          style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter user name",
                           labelText: "User name",
@@ -117,6 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                         height: 10.0,
                       ),
                       TextFormField(
+                          style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: "Enter password",
@@ -183,7 +190,6 @@ class _LoginPageState extends State<LoginPage> {
                       child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                       
                        Text("Forgot password?",style: TextStyle(color:darkBluebtn, backgroundColor: Colors.white,)),
                       ], 
                      ),

@@ -20,7 +20,6 @@ class _RegistartionPageState extends State<RegistartionPage> {
   bool isDisabled=false;
   static Color darkBlueText = Color(0xff032b49);
   final _formKey = GlobalKey<FormState>();
-  
 
   moveToHome(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
@@ -62,30 +61,47 @@ class _RegistartionPageState extends State<RegistartionPage> {
                 ),
                   Padding(
                   padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 35.0),
-                child:Text(
-                    "Are you 18 year or older",
-                    style: TextStyle(
-                      fontSize: 13,
-                     color: darkBlueText,
-                      fontWeight: FontWeight.normal
-                      
-                    ),
-                  ),
-                  ),
-                  //  Switch(
-                  //           value: isDisabled,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  new Expanded(
+                                      child: Padding(
+                                      child:Text(
+                                      "Are you 18 year or older",
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                      color: darkBlueText,
+                                        fontWeight: FontWeight.normal
+                                        
+                                      ),
+                                    ),
+                                  padding: EdgeInsets.only(left: 5),
+                                  )),
+                                       Switch(
+                            value: isDisabled,
                           
-                  //           onChanged: (check) {
-                  //             setState(() {
-                  //               isDisabled = check;
-                  //             });
-                  //           }),
+                            onChanged: (check) {
+                              setState(() {
+                                isDisabled = check;
+                              });
+                            }),
+                                ],
+                              ),
+
+            
+                  ),
+              
                     Padding(
                     padding: const EdgeInsets.symmetric(
                       vertical: 16.0, horizontal: 32.0),
                   child: Column(
                     children: [
                       TextFormField(
+                      style: TextStyle(
+                    fontSize: 11.0,
+                    height: 1.0,                
+                  ),
                         decoration: InputDecoration(
                           hintText: "Enter First name",
                           labelText: "First name",
@@ -108,6 +124,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                            TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter Last name",
                           labelText: "Last name",
@@ -131,6 +151,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                       ),
                     
                        TextFormField(
+                          style: TextStyle(
+                          fontSize: 11.0,
+                          height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter Create login",
                           labelText: "Create login",
@@ -153,6 +177,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                            TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter password",
                           labelText: "Password",
@@ -176,6 +204,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                       TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: "Enter confirm password",
@@ -196,6 +228,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                             TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter phone",
                           labelText: "Phone",
@@ -218,6 +254,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                        TextFormField(
+                             style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter email",
                           labelText: "Email",
@@ -239,6 +279,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                          TextFormField(
+                               style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter Streat Address",
                           labelText: "Streat Address",
@@ -260,6 +304,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                          TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter State",
                           labelText: "State",
@@ -281,6 +329,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                          TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter Zip code",
                           labelText: "Zip code",
@@ -310,6 +362,88 @@ class _RegistartionPageState extends State<RegistartionPage> {
                       ], 
                       ),
                       ), 
+                        SizedBox(
+                        height: 10.0,
+                      ),
+               
+                      Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        TextButton(
+                          child: Text(
+                            "Child 1",
+                            style: TextStyle(fontSize: 14,color:Colors.white)
+                          ),
+                          style: ButtonStyle(
+                            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xff3049ac)),
+                            foregroundColor: MaterialStateProperty.all<Color>(Color(0xff3049ac)),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                side: BorderSide(color: Color(0xff3049ac))
+                              )
+                            )
+                          ),
+                          onPressed: () => null
+                        ),
+                        SizedBox(width: 15),
+                        ElevatedButton(
+                          child: Text(
+                            "Child 2",
+                            style: TextStyle(fontSize: 14,color:Colors.white)
+                          ),
+                          style: ButtonStyle(
+                            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xffd3d3d3)),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                side: BorderSide(color: Color(0xffd3d3d3))
+                              )
+                            )
+                          ),
+                          onPressed: () => null
+                        ), SizedBox(width: 15),
+                          ElevatedButton(
+                          child: Text(
+                            "Child 3",
+                            style: TextStyle(fontSize: 14,color:Colors.grey)
+                          ),
+                          style: ButtonStyle(
+                            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xffd3d3d3)),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                side: BorderSide(color: Color(0xffd3d3d3))
+                              )
+                            )
+                          ),
+                          onPressed: () => null
+                        ), SizedBox(width: 15),
+                          ElevatedButton(
+                          child: Text(
+                            "Child 4",
+                            style: TextStyle(fontSize: 14,color:Colors.grey)
+                          ),
+                          style: ButtonStyle(
+                            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                            foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                            backgroundColor: MaterialStateProperty.all<Color>(Color(0xffd3d3d3)),
+                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0),
+                                side: BorderSide(color: Color(0xffd3d3d3))
+                              )
+                            )
+                          ),
+                          onPressed: () => null
+                        ), SizedBox(width: 15),
+                      ]
+                    ),
                      SizedBox(
                         height: 10.0,
                       ),
@@ -322,6 +456,88 @@ class _RegistartionPageState extends State<RegistartionPage> {
                       ], 
                       ),
                        ), 
+                         SizedBox(
+                        height: 10.0,
+                      ),
+               
+                      Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TextButton(
+                      child: Text(
+                        "1 to 12".toLowerCase(),
+                        style: TextStyle(fontSize: 14,color:Colors.white)
+                      ),
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xff3049ac)),
+                        foregroundColor: MaterialStateProperty.all<Color>(Color(0xff3049ac)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            side: BorderSide(color: Color(0xff3049ac))
+                          )
+                        )
+                      ),
+                      onPressed: () => null
+                    ),
+                    SizedBox(width: 15),
+                    ElevatedButton(
+                      child: Text(
+                        "1 to 12".toLowerCase(),
+                        style: TextStyle(fontSize: 14,color:Colors.white)
+                      ),
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xffd3d3d3)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            side: BorderSide(color: Color(0xffd3d3d3))
+                          )
+                        )
+                      ),
+                      onPressed: () => null
+                    ), SizedBox(width: 15),
+                      ElevatedButton(
+                      child: Text(
+                        "1 to 12".toLowerCase(),
+                        style: TextStyle(fontSize: 14,color:Colors.grey)
+                      ),
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xffd3d3d3)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            side: BorderSide(color: Color(0xffd3d3d3))
+                          )
+                        )
+                      ),
+                      onPressed: () => null
+                    ), SizedBox(width: 15),
+                     ElevatedButton(
+                      child: Text(
+                        "1 to 12".toLowerCase(),
+                        style: TextStyle(fontSize: 14,color:Colors.grey)
+                      ),
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(10)),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xffd3d3d3)),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            side: BorderSide(color: Color(0xffd3d3d3))
+                          )
+                        )
+                      ),
+                      onPressed: () => null
+                    ), SizedBox(width: 15),
+                  ]
+                ),
                       SizedBox(
                         height: 10.0,
                       ),
@@ -393,6 +609,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                          TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter card number",
                           labelText: "Card Number",
@@ -413,6 +633,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                          TextFormField(
+                             style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter mailing address",
                           labelText: "Mailing Address",
@@ -432,9 +656,11 @@ class _RegistartionPageState extends State<RegistartionPage> {
                             SizedBox(
                         height: 10.0,
                       ),
-                      
-                      
                         TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter expiration date",
                           labelText: "Expiration Date ",
@@ -459,6 +685,10 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         height: 10.0,
                       ),
                            TextFormField(
+                            style: TextStyle(
+                            fontSize: 11.0,
+                           height: 1.0,                
+                           ),
                         decoration: InputDecoration(
                           hintText: "Enter cvv",
                           labelText: "CVV",
@@ -541,7 +771,7 @@ class _RegistartionPageState extends State<RegistartionPage> {
                           onTap: () => moveToHome(context),
                           child: AnimatedContainer(
                             duration: Duration(seconds: 1),
-                            width: changeButton ? 40 : 280,
+                            width: changeButton ? 40 : 350,
                             height: 40,
                             alignment: Alignment.center,
                             child: changeButton
@@ -554,7 +784,7 @@ class _RegistartionPageState extends State<RegistartionPage> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 18),
+                                        fontSize: 15),
                                   ),
                           ),
                         ),
@@ -562,18 +792,18 @@ class _RegistartionPageState extends State<RegistartionPage> {
                         SizedBox(
               height: 10,
             ),
-            //             InkWell(
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: <Widget>[
-            //       Text("Already have an account ? ", style: TextStyle(fontWeight: FontWeight.bold),),
-            //       Text("Login",style: TextStyle(color: Color(0xff6bceff),fontWeight: FontWeight.bold),),
-            //     ], 
-            //   ),
-            //   onTap: (){
-            //     Navigator.pushNamed(context, '/login');
-            //   },
-            // ), 
+                        InkWell(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Already have an account ? ", style: TextStyle(fontWeight: FontWeight.bold),),
+                  Text("Login",style: TextStyle(color: Color(0xff3049ac),fontWeight: FontWeight.bold),),
+                ], 
+              ),
+              onTap: (){
+                Navigator.pushNamed(context, '/login');
+              },
+            ), 
                     ],
                   ),
                 )
