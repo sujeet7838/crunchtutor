@@ -28,6 +28,18 @@ dependencies:
   velocity_x: ^3.3.0
   pin_code_fields: ^7.3.0
   dotted_border: ^2.0.0+1
+  http: ^0.13.3
+  shared_preferences: ^2.0.7
+  url_launcher: ^6.0.9
+  flutter_screenutil: ^5.0.0+2
+  font_awesome_flutter: ^9.1.0
+  fluttertoast: ^8.0.8
+  file_picker: ^4.0.1
+  dio: ^4.0.0
+  path: ^1.8.0
+  image_picker: ^0.8.4
+  convert: ^3.0.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
